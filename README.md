@@ -5,95 +5,95 @@
 <h1 align="center">PicStar</h1>
 
 <p align="center">
-  <strong>Um cliente alternativo moderno para Pixiv em Kotlin &amp; Jetpack Compose</strong><br />
-  Inspirado na arquitetura de APIs do PixEz Flutter, com interface própria e foco em descoberta de artistas.
+  <strong>A modern alternative Pixiv Android client built with Kotlin &amp; Jetpack Compose</strong><br />
+  Inspired by PixEz Flutter's API architecture, featuring a custom UI focused on artist discovery.
 </p>
 
 ---
 
-## Visão Geral
+## Overview
 
-**PicStar** é um aplicativo Android nativo desenvolvido em **Kotlin** com **Jetpack Compose** e **Material 3**, consumindo diretamente a API oficial do Pixiv (`app-api.pixiv.net`) com autenticação **OAuth2 PKCE**.
+**PicStar** is a native Android application built with **Kotlin**, **Jetpack Compose**, and **Material 3**, communicating directly with Pixiv's official App-API (`app-api.pixiv.net`) via **OAuth2 PKCE** authentication.
 
-O projeto nasceu com o objetivo de oferecer uma experiência visual moderna, fluida e fiel às principais funcionalidades de descoberta do Pixiv — com destaque para o fluxo **"Other artists to follow"** sempre que você segue um criador.
+The project delivers a modern, fluid browsing experience while preserving Pixiv's core discovery workflows — especially the **"Other artists to follow"** drawer triggered whenever you follow a creator.
 
 ---
 
-## Principais Funcionalidades
+## Key Features
 
-### Autenticação & Sessão
-- **Login OAuth2 PKCE** integrado via WebView (`pixiv://account/login?code=...`), com renovação automática de *refresh token* e *access token*.
-- **Gate de autenticação**: o acesso ao restante do app é liberado apenas após login válido.
+### Authentication & Session
+- Integrated **OAuth2 PKCE login** via WebView (`pixiv://account/login?code=...`) with automatic *refresh token* and *access token* renewal.
+- **Authentication gate**: access to the app is locked behind a dedicated login screen until a valid Pixiv session is active.
 
 ### Home (`For You` & `Following`)
 - **For You**:
-  - Carrossel de **Pixiv Highlights / Pixivision**.
-  - Carrossel de **Artistas recomendados** (limitado a 10 cards no carrossel, com opção **View more** para ver a lista completa), exibindo foto de perfil à direita e as **5 últimas ilustrações** dentro do card.
-  - Descoberta **Other artists to follow** (`/v1/user/related`) ao seguir qualquer artista.
-  - Feed de **ilustrações recomendadas** com rolagem infinita.
+  - **Pixiv Highlights / Pixivision** carousel.
+  - **Recommended Artists** carousel (capped at 10 cards with a **View more** modal for the full list), showing each artist's avatar on the right and their **5 latest illustrations** inside the card.
+  - **Other artists to follow** suggestions (`/v1/user/related`) expanded whenever you follow an artist.
+  - Infinite-scrolling **Recommended Illustrations** feed.
 - **Following**:
-  - Alternância entre **últimas ilustrações** dos artistas seguidos e listagem **By followed artists**.
+  - Toggle between **latest works** from followed artists and a **By followed artists** view.
 
 ### Popular
-- Rankings do Pixiv divididos por categoria:
+- Pixiv rankings organized by mode:
   - `Daily`, `For Male`, `For Female`, `Original`, `Rookie`, `Weekly`, `Monthly`, `AI`, `R-18`, `R-18 AI`, `R-18 Weekly`, `R-18G`.
 
 ### Favorites
-- Lista de ilustrações curtidas/favoritadas pelo usuário, com filtro por tags dinâmicas.
+- Bookmarked/liked illustrations with dynamic tag filtering.
 
-### Busca Avançada
-- Botão flutuante de busca disponível nas abas principais, com **histórico recente**, **tags recomendadas** e **autocomplete** após 2+ caracteres.
-- Resultados navegáveis por ordenação: `Newest`, `Popular ⌄` (com dropdown para *All*, *Male* e *Female*) e `Oldest`.
-- Filtros avançados em modal flutuante nos resultados:
-  - **Work type** (Illustrations, Manga, Ugoira, Novels e combinações)
-  - **Posting date** (Any time, 24h, week, month, 6 months, year)
-  - **Like counts**, **AI generated** e **Mature content (R-18)**.
+### Advanced Search
+- Floating search button accessible across main tabs, featuring **recent search history**, **recommended tags**, and **live autocomplete** after 2+ characters.
+- Navigable sort chips on search results: `Newest`, `Popular ⌄` (with dropdown for *All*, *Male*, and *Female*), and `Oldest`.
+- Floating filter modal on search results:
+  - **Work type** (Illustrations, Manga, Ugoira, Novels, and combinations)
+  - **Posting date** (Any time, Past 24 hours, Past week, Past month, Past 6 months, Past year)
+  - **Like counts**, **AI-generated** toggle, and **Mature content (R-18)** toggle.
 
-### Post & Perfil do Criador
-- **Detalhes do Post**:
-  - Visualizador em **tela cheia** com suporte a múltiplas páginas e zoom por pinça/duplo toque (1 clique).
-  - **Download por clique longo** (imagens e Ugoira `.zip`) condicionado à pasta configurada em **Settings > Download settings** (via SAF / `OpenDocumentTree`).
-  - Reprodução nativa de animações **Ugoira** frame-a-frame.
-  - **Tags traduzidas** (`translated_name`) clicáveis para pesquisa rápida.
-  - **Bookmarks clicáveis** para visualizar os usuários que favoritaram o post.
-  - **Comentários em dropdown expansível**, com navegação direta ao perfil de quem comentou.
-  - **Posts recomendados** relacionados com rolagem infinita.
-- **Perfil do Artista / Usuário**:
-  - Bio, contadores, links sociais clicáveis (**Website**, **Twitter/X**) e botão de Follow com sugestões relacionadas.
-  - Abas: **Works** (filtrável por `All`, `Illustrations`, `Manga` e `Manga Series`), **Likes**, **Following**, **MyPixiv** e **Followers**.
+### Post Detail & Creator Profile
+- **Post Detail**:
+  - **Single tap** opens a **Fullscreen Image Viewer** with multi-page swiping and pinch/double-tap zoom.
+  - **Long press** downloads illustrations or Ugoira `.zip` archives directly to your configured folder (enabled only after setting a download folder in **Settings > Download settings** via Android SAF / `OpenDocumentTree`).
+  - Native frame-by-frame **Ugoira** animation playback.
+  - Clickable **translated tags** (`translated_name` alongside `#tag`).
+  - Clickable **bookmark count** to browse the users who bookmarked the post.
+  - Collapsible **Comments dropdown**, with direct navigation to any commenter's profile.
+  - Infinite-scrolling **More Like This** recommendations.
+- **Creator / User Profile**:
+  - Bio, follower/MyPixiv counts, clickable social links (**Website**, **Twitter/X**), and follow button with related artist suggestions.
+  - Tabs: **Works** (filterable by `All`, `Illustrations`, `Manga`, and `Manga Series`), **Likes**, **Following**, **MyPixiv**, and **Followers**.
 
 ### Settings
-- **Profile**, **Preferences**, **Download settings** (pasta de destino SAF, qualidade da imagem, padrão de nome e proxy/host `pximg`), **Theme** e **About**.
+- **Profile**, **Preferences**, **Download settings** (SAF download folder picker, image quality, file naming pattern, and `pximg` host/mirror), **Theme**, and **About**.
 
 ---
 
-## Stack & Estrutura do Projeto
+## Tech Stack & Project Structure
 
-- **Linguagem**: Kotlin (JVM 17)
+- **Language**: Kotlin (JVM 17)
 - **UI**: Jetpack Compose + Material 3 (`compileSdk = 35`, `minSdk = 26`)
-- **Rede & Imagens**: `HttpURLConnection` com headers do cliente Pixiv (`Referer: https://app-api.pixiv.net/`, `X-Client-Time`, `X-Client-Hash`), decodificação direta de bitmaps e `ZipInputStream` para Ugoira.
-- **Persistência**: `SharedPreferences` + Storage Access Framework (`DocumentsContract`) para downloads.
+- **Networking & Media**: `HttpURLConnection` with Pixiv client headers (`Referer: https://app-api.pixiv.net/`, `X-Client-Time`, `X-Client-Hash`), direct bitmap decoding, and `ZipInputStream` for Ugoira frames.
+- **Storage**: `SharedPreferences` + Android Storage Access Framework (`DocumentsContract`) for downloads.
 
 ```text
 app/src/main/java/com/picstar/app/
-├── api/          # PixEzApiClient (OAuth2 PKCE + App-API Pixiv)
-├── data/         # PicStarViewModel e PicStarRepository
-├── model/        # Modelos de domínio, filtros e estado de UI
+├── api/          # PixEzApiClient (OAuth2 PKCE + Pixiv App-API)
+├── data/         # PicStarViewModel and PicStarRepository
+├── model/        # Domain models, filters, and UI state
 ├── ui/
 │   ├── components/ # Cards, PximgNetworkImage, UgoiraAnimationPlayer
-│   ├── screens/    # Home, Popular, Favorites, Search, Settings, Modais
-│   └── theme/      # Temas (Midnight, etc.) e tipografia
+│   ├── screens/    # Home, Popular, Favorites, Search, Settings, Modals
+│   └── theme/      # Themes (Midnight, etc.) and typography
 └── MainActivity.kt
 ```
 
 ---
 
-## Como Compilar
+## Building & Installing
 
 ```bash
-# Rodar testes unitários e gerar APK de debug
+# Run unit tests and build the debug APK
 ./gradlew testDebugUnitTest assembleDebug --no-daemon
 
-# Instalar no aparelho conectado via ADB
+# Install on a connected Android device via ADB
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
