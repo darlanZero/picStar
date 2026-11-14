@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.PicStar" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#071423</item>
+        <item name="android:navigationBarColor">#071423</item>
+    </style>
+</resources>

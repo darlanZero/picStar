@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Subtle orbital glow behind the monogram -->
+    <path
+        android:pathData="M54,23A31,31 0,1 1,53.99 23Z"
+        android:strokeWidth="1.8"
+        android:strokeColor="#38FF8575"
+        android:fillColor="#00000000" />
+
+    <!-- Elegant cursive "P" centered in the 108dp safe zone -->
+    <!-- Entry flourish + curved stem + descender tail -->
+    <path
+        android:pathData="M34,42 C37,35 44,32 49,33 L41,72 C39.5,77 35,79 31.5,76.5"
+        android:strokeWidth="5.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="34"
+                android:startY="32"
+                android:endX="44"
+                android:endY="78"
+                android:type="linear">
+                <item android:color="#FFFFA07A" android:offset="0" />
+                <item android:color="#FFFF5C5C" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cursive "P" upper loop sweeping gracefully -->
+    <path
+        android:pathData="M45,35.5 C55,29.5 68,31.5 69.5,41.5 C70.8,50.5 60.5,57.5 45.5,56 C41.5,55.6 39,54.2 38,52.5"
+        android:strokeWidth="5.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="42"
+                android:startY="31"
+                android:endX="69"
+                android:endY="56"
+                android:type="linear">
+                <item android:color="#FFFFA07A" android:offset="0" />
+                <item android:color="#FFFF6B5B" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 4-point star positioned to the right above the "P" -->
+    <path
+        android:pathData="M73,24 C73.9,30.2 76.8,33.1 83,34 C76.8,34.9 73.9,37.8 73,44 C72.1,37.8 69.2,34.9 63,34 C69.2,33.1 72.1,30.2 73,24 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="65"
+                android:startY="25"
+                android:endX="81"
+                android:endY="42"
+                android:type="linear">
+                <item android:color="#FFFFE082" android:offset="0" />
+                <item android:color="#FFFF8575" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>
